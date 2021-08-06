@@ -43,6 +43,7 @@ namespace GuessMelody
             this.BPlay.TabIndex = 0;
             this.BPlay.Text = "Игра";
             this.BPlay.UseVisualStyleBackColor = true;
+            this.BPlay.Click += new System.EventHandler(this.BPlay_Click);
             // 
             // BParams
             // 
@@ -53,6 +54,7 @@ namespace GuessMelody
             this.BParams.TabIndex = 1;
             this.BParams.Text = "Настройки";
             this.BParams.UseVisualStyleBackColor = true;
+            this.BParams.Click += new System.EventHandler(this.BParams_Click);
             // 
             // BExit
             // 
