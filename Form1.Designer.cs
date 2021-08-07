@@ -77,6 +77,7 @@ namespace GuessMelody
             this.Controls.Add(this.BPlay);
             this.Name = "FormMain";
             this.Text = "Угадай мелодию";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
 
         }

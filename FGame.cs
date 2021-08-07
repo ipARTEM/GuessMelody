@@ -12,15 +12,36 @@ namespace GuessMelody
 {
     public partial class FGame : Form
     {
+        Random random = new Random();
         public FGame()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        void MakeMusic()
         {
-            WMP.URL = Victorina.list[0];
 
+            int n = random.Next(0, Victorina.list.Count);
+            WMP.URL = Victorina.list[n];
+            //WMP.Ctlcontrols.play();
+            Victorina.list.RemoveAt(n);
+
+        }
+
+        private void BNext_Click(object sender, EventArgs e)
+        {
+            MakeMusic();
+
+        }
+
+        private void FGame_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FGame_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            WMP.Ctlcontrols.stop();
         }
     }
 }

@@ -36,5 +36,12 @@ namespace GuessMelody
             fGame.ShowDialog();
 
         }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            Victorina.ReadParam();
+            Victorina.ReadMisic();
+
+        }
     }
 }

@@ -35,6 +35,13 @@ namespace GuessMelody
             this.CBAllDirectory = new System.Windows.Forms.CheckBox();
             this.BOK = new System.Windows.Forms.Button();
             this.BCancel = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.CBGameDuration = new System.Windows.Forms.ComboBox();
+            this.CBMusicDuration = new System.Windows.Forms.ComboBox();
+            this.CBRandomStart = new System.Windows.Forms.CheckBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBox1
@@ -80,7 +87,7 @@ namespace GuessMelody
             // BOK
             // 
             this.BOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BOK.Location = new System.Drawing.Point(397, 393);
+            this.BOK.Location = new System.Drawing.Point(499, 393);
             this.BOK.Name = "BOK";
             this.BOK.Size = new System.Drawing.Size(118, 33);
             this.BOK.TabIndex = 4;
@@ -91,7 +98,7 @@ namespace GuessMelody
             // BCancel
             // 
             this.BCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BCancel.Location = new System.Drawing.Point(560, 393);
+            this.BCancel.Location = new System.Drawing.Point(650, 393);
             this.BCancel.Name = "BCancel";
             this.BCancel.Size = new System.Drawing.Size(138, 32);
             this.BCancel.TabIndex = 5;
@@ -99,11 +106,88 @@ namespace GuessMelody
             this.BCancel.UseVisualStyleBackColor = true;
             this.BCancel.Click += new System.EventHandler(this.BCancel_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.CBRandomStart);
+            this.groupBox1.Controls.Add(this.CBMusicDuration);
+            this.groupBox1.Controls.Add(this.CBGameDuration);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(10, 298);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(483, 140);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Настройки игры";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(139, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Продолжительность игры";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(19, 63);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(86, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Время на ответ";
+            // 
+            // CBGameDuration
+            // 
+            this.CBGameDuration.FormattingEnabled = true;
+            this.CBGameDuration.Items.AddRange(new object[] {
+            "30",
+            "45",
+            "60",
+            "75",
+            "90",
+            "105",
+            "120"});
+            this.CBGameDuration.Location = new System.Drawing.Point(179, 29);
+            this.CBGameDuration.Name = "CBGameDuration";
+            this.CBGameDuration.Size = new System.Drawing.Size(49, 21);
+            this.CBGameDuration.TabIndex = 2;
+            this.CBGameDuration.Text = "30";
+            // 
+            // CBMusicDuration
+            // 
+            this.CBMusicDuration.FormattingEnabled = true;
+            this.CBMusicDuration.Items.AddRange(new object[] {
+            "5",
+            "10",
+            "15",
+            "20",
+            "25",
+            "30",
+            "35"});
+            this.CBMusicDuration.Location = new System.Drawing.Point(179, 63);
+            this.CBMusicDuration.Name = "CBMusicDuration";
+            this.CBMusicDuration.Size = new System.Drawing.Size(49, 21);
+            this.CBMusicDuration.TabIndex = 3;
+            this.CBMusicDuration.Text = "25";
+            // 
+            // CBRandomStart
+            // 
+            this.CBRandomStart.AutoSize = true;
+            this.CBRandomStart.Location = new System.Drawing.Point(19, 95);
+            this.CBRandomStart.Name = "CBRandomStart";
+            this.CBRandomStart.Size = new System.Drawing.Size(133, 17);
+            this.CBRandomStart.TabIndex = 4;
+            this.CBRandomStart.Text = "Со случайного места";
+            this.CBRandomStart.UseVisualStyleBackColor = true;
+            // 
             // FParam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BCancel);
             this.Controls.Add(this.BOK);
             this.Controls.Add(this.CBAllDirectory);
@@ -112,6 +196,9 @@ namespace GuessMelody
             this.Controls.Add(this.listBox1);
             this.Name = "FParam";
             this.Text = "Настройки";
+            this.Load += new System.EventHandler(this.FParam_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,5 +212,11 @@ namespace GuessMelody
         private System.Windows.Forms.CheckBox CBAllDirectory;
         private System.Windows.Forms.Button BOK;
         private System.Windows.Forms.Button BCancel;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox CBMusicDuration;
+        private System.Windows.Forms.ComboBox CBGameDuration;
+        private System.Windows.Forms.CheckBox CBRandomStart;
     }
 }
