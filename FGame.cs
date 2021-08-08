@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
+using System.IO;
 
 namespace GuessMelody
 {
@@ -15,6 +17,9 @@ namespace GuessMelody
         Random random = new Random();
 
         int musicDuration=Victorina.musicDuration;
+
+        bool[] players = new bool[2];
+
         public FGame()
         {
             InitializeComponent();
@@ -29,9 +34,12 @@ namespace GuessMelody
 
                 int n = random.Next(0, Victorina.list.Count);
                 WMP.URL = Victorina.list[n];
+                Victorina.answer = Path.GetFileNameWithoutExtension(WMP.URL);
                 //WMP.Ctlcontrols.play();
                 Victorina.list.RemoveAt(n);
                 LMelodyCount.Text = Victorina.list.Count.ToString();
+                players[0] = false;
+                players[1] = false;
             }
 
         }
@@ -106,12 +114,16 @@ namespace GuessMelody
 
         private void FGame_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData==Keys.A)
+            if (!timer1.Enabled) return;
+            if (players[0]==false&& e.KeyData==Keys.A)
             {
                 GamePause();
 
                 FMessage fm = new FMessage();
                 fm.LMessage.Text = "Игрок 1";
+                SoundPlayer soundPlayer = new SoundPlayer("Resources\\1.wav");
+                soundPlayer.PlaySync();
+                players[0] = true;
                 if (fm.ShowDialog()==DialogResult.Yes)
                 {
                     LCounter1.Text = Convert.ToString(Convert.ToInt32(LCounter1.Text) + 1);
@@ -121,11 +133,14 @@ namespace GuessMelody
                 GamePlay();
             }
 
-            if (e.KeyData == Keys.L)
+            if (players[1]==false&& e.KeyData == Keys.L)
             {
                 GamePause();
                 FMessage fm = new FMessage();
                 fm.LMessage.Text = "Игрок 2";
+                SoundPlayer soundPlayer = new SoundPlayer("Resources\\2.wav");
+                soundPlayer.PlaySync();
+                players[1] = true;
                 if (fm.ShowDialog() == DialogResult.Yes)
                 {
                     LCounter2.Text = Convert.ToString(Convert.ToInt32(LCounter2.Text) + 1);
@@ -144,6 +159,21 @@ namespace GuessMelody
                     WMP.Ctlcontrols.currentPosition = random.Next(0, (int)WMP.currentMedia.duration - 20);
 
                 }
+
+        }
+
+        private void FGame_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void LCounter1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button==MouseButtons.Left)
+                (sender as Label).Text = Convert.ToString(Convert.ToInt32((sender as Label).Text) + 1);
+
+            if (e.Button == MouseButtons.Right)
+                (sender as Label).Text = Convert.ToString(Convert.ToInt32((sender as Label).Text) -1);
 
         }
     }

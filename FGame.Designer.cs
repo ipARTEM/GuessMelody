@@ -97,6 +97,7 @@ namespace GuessMelody
             this.LCounter1.Size = new System.Drawing.Size(29, 31);
             this.LCounter1.TabIndex = 4;
             this.LCounter1.Text = "0";
+            this.LCounter1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LCounter1_MouseClick);
             // 
             // LCounter2
             // 
@@ -107,6 +108,7 @@ namespace GuessMelody
             this.LCounter2.Size = new System.Drawing.Size(29, 31);
             this.LCounter2.TabIndex = 5;
             this.LCounter2.Text = "0";
+            this.LCounter2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LCounter1_MouseClick);
             // 
             // BPause
             // 
@@ -184,6 +186,7 @@ namespace GuessMelody
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FGame_FormClosed);
             this.Load += new System.EventHandler(this.FGame_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FGame_KeyDown);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.FGame_MouseClick);
             ((System.ComponentModel.ISupportInitialize)(this.WMP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
